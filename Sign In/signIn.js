@@ -54,5 +54,3 @@ function signUp() {
     getUserName.style.backgroundColor = 'red';
     getUserPassword.style.backgroundColor = 'red';
 }
-
-export  {}
