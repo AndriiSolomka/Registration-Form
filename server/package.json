@@ -1,0 +1,14 @@
+{
+  "name": "lesson_18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "npx json-server db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.23"
+  }
+}
