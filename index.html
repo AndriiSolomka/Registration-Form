@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="login">
+      <!--    <h2 class="active">Sign In</h2>-->
+      <button type="button" class="signup">Sign Up</button>
 
-<div class="login">
-<!--    <h2 class="active">Sign In</h2>-->
-    <button type="button" class="signup">Sign Up</button>
+      <br /><br />
+      <label for="username">Username:</label>
+      <input type="text" id="username" class="text" name="username" />
 
-    <br><br>
-    <label for="username">Username:</label>
-    <input type="text" id="username" class="text" name="username">
-
-    <div id="email" class="hidden">
+      <div id="email" class="hidden">
         <label for="email">Email:</label>
-        <input type="email" id="useremail" class="text">
-    </div>
+        <input type="email" id="useremail" class="text" />
+      </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" class="text" name="password">
+      <label for="password">Password:</label>
+      <input type="password" id="password" class="text" name="password" />
 
-    <div id="age" class="hidden">
+      <div id="age" class="hidden">
         <label for="age">Age:</label>
-        <input type="text" id="userage" class="text" name="age">
-    </div>
+        <input type="text" id="userage" class="text" name="age" />
+      </div>
 
-    <div id="signinStatus">
+      <div id="signinStatus">
         <button type="submit" class="signin">Sign In</button>
+      </div>
+
+      <div id="loginStatus" class="hidden">
+        <button type="submit" class="logIn">Log In</button>
+      </div>
+
+      <br /><br />
+      <br /><br />
     </div>
 
-    <div id="loginStatus" class="hidden">
-    <button type="submit" class="logIn">Log In</button>
-    </div>
-
-    <br><br>
-    <br><br>
-</div>
-
-<script type="module" src="./main.js"></script>
-<script type="module" src="./const.js"></script>
-<script type="module" src="Sign In/signIn.js"></script>
-<script type="module" src="Log In/logIn.js"></script>
-</body>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./const.js"></script>
+    <script type="module" src="Sign In/signIn.js"></script>
+    <script type="module" src="Log In/logIn.js"></script>
+  </body>
 </html>

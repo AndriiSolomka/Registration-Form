@@ -1,1 +1,1 @@
-alert('Go...')
+alert('Go...');
