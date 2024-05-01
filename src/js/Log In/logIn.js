@@ -1,4 +1,4 @@
-'use strict';
+/* 'use strict';
 
 import {
   URL,
@@ -10,8 +10,9 @@ import {
   logInBtn,
   signInBtn,
 } from '../const/const.js';
+import { checkName } from './check.js';
 
-signUpBtn.addEventListener('click', (event) => {
+/* signUpBtn.addEventListener('click', (event) => {
   event.preventDefault();
   hideEmail.classList.toggle('hidden');
   hideAge.classList.toggle('hidden');
@@ -28,6 +29,7 @@ signUpBtn.addEventListener('click', (event) => {
   getUserName.value = '';
   getUserName.addEventListener('input', (event) => {
     newUser.name = event.target.value;
+    checkName(newUser.name);
   });
 
   hideEmail.addEventListener('input', (event) => {
@@ -54,3 +56,4 @@ signUpBtn.addEventListener('click', (event) => {
     }
   });
 });
+ */
