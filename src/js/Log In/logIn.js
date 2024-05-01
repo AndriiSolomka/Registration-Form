@@ -9,7 +9,6 @@ import {
   hideEmail,
   logInBtn,
   signInBtn,
-  errorText,
 } from '../const/const.js';
 
 signUpBtn.addEventListener('click', (event) => {
@@ -46,7 +45,7 @@ signUpBtn.addEventListener('click', (event) => {
 
   logInBtn.addEventListener('click', async () => {
     try {
-      const response = await fetch(URL, {
+      await fetch(URL, {
         method: 'POST',
         body: JSON.stringify(newUser),
       });

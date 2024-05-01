@@ -6,7 +6,6 @@ import {
   getUserPassword,
   signInBtn,
   signUpBtn,
-  logInBtn,
 } from '../const/const.js';
 import { getUserData } from '../main/main.js';
 
