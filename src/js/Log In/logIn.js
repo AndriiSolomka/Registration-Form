@@ -10,7 +10,7 @@ import {
   logInBtn,
   signInBtn,
   errorText,
-} from '../const.js';
+} from '../const/const.js';
 
 signUpBtn.addEventListener('click', (event) => {
   event.preventDefault();

@@ -1,6 +1,6 @@
 'use strict';
 
-import { URL } from './const.js';
+import { URL } from '../const/const.js';
 
 const getUserData = async (URL) => {
   try {
