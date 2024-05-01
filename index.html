@@ -9,7 +9,7 @@
 <body>
 
 <div class="login">
-    <h2 class="active">Sign In</h2>
+<!--    <h2 class="active">Sign In</h2>-->
     <button type="button" class="signup">Sign Up</button>
 
     <br><br>
@@ -18,7 +18,7 @@
 
     <div id="email" class="hidden">
         <label for="email">Email:</label>
-        <input type="email" id="useremail" class="text" name="email">
+        <input type="email" id="useremail" class="text">
     </div>
 
     <label for="password">Password:</label>
@@ -29,15 +29,16 @@
         <input type="text" id="userage" class="text" name="age">
     </div>
 
-    <button type="submit" class="signin">Sign In</button>
+    <div id="signinStatus">
+        <button type="submit" class="signin">Sign In</button>
+    </div>
+
+    <div id="loginStatus" class="hidden">
     <button type="submit" class="logIn">Log In</button>
+    </div>
 
     <br><br>
     <br><br>
-    <div id="ErrorText" class="hidden">
-        <h1>Check your input</h1>
-        <h1>Or register</h1>
-    </div>
 </div>
 
 <script type="module" src="./main.js"></script>

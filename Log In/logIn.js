@@ -1,15 +1,16 @@
 "use strict"
 
-import {URL,getUserPassword,signUpBtn,getUserName} from "../const.js";
+import {URL, getUserPassword, signUpBtn, getUserName, hideAge, hideEmail, logInBtn, signInBtn, errorText} from "../const.js";
 
-
-const hideEmail = document.getElementById('email');
-const hideAge = document.getElementById('age');
 
 signUpBtn.addEventListener('click', (event) => {
     event.preventDefault();
     hideEmail.classList.toggle('hidden');
     hideAge.classList.toggle('hidden');
+    signInBtn.classList.toggle('hidden')
+    logInBtn.classList.toggle('hidden')
+
+
 
     let newUser = {
         "name": "",
@@ -18,6 +19,7 @@ signUpBtn.addEventListener('click', (event) => {
         "age": "",
     };
 
+    getUserName.value = '';
     getUserName.addEventListener('input', (event) => {
         newUser.name = event.target.value;
     });
@@ -26,6 +28,7 @@ signUpBtn.addEventListener('click', (event) => {
         newUser.email = event.target.value;
     });
 
+    getUserPassword.value = '';
     getUserPassword.addEventListener('input', (event) => {
         newUser.password = event.target.value;
     });
@@ -33,8 +36,6 @@ signUpBtn.addEventListener('click', (event) => {
     hideAge.addEventListener('input', (event) => {
         newUser.age = event.target.value;
     });
-
-    const logInBtn = document.querySelector('.logIn');
 
     logInBtn.addEventListener('click', async () => {
         try {

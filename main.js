@@ -13,6 +13,5 @@ const getUserData = async (URL) => {
     }
 }
 
-
 getUserData(URL)
 export {getUserData}

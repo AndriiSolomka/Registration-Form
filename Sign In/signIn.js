@@ -1,6 +1,6 @@
 "use strict";
 
-import {URL,getUserName,getUserPassword,signInBtn,signUpBtn} from "../const.js";
+import {URL,getUserName,getUserPassword,signInBtn,signUpBtn, logInBtn} from "../const.js";
 import {getUserData} from '../main.js'
 
 
@@ -39,18 +39,16 @@ function checkUserData(data) {
 }
 
 function signUp() {
-    const showText = document.getElementById('ErrorText');
-    showText.classList.toggle('hidden');
 
     setTimeout(() => {
         signUpBtn.style.backgroundColor = 'green';
     }, 8000);
 
     setTimeout(() => {
-        getUserName.style.backgroundColor = 'white';
-        getUserPassword.style.backgroundColor = 'white';
+        getUserName.style.backgroundColor = '';
+        getUserPassword.style.backgroundColor = '';
     }, 8000);
 
-    getUserName.style.backgroundColor = 'red';
-    getUserPassword.style.backgroundColor = 'red';
+    getUserName.style.backgroundColor = '#c97575';
+    getUserPassword.style.backgroundColor = '#c97575';
 }
