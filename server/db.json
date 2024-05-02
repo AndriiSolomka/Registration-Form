@@ -48,6 +48,13 @@
       "email": "asolomka@nail.com",
       "password": "AndriiSolomka!12",
       "age": 18
+    },
+    {
+      "id": "20bc",
+      "name": "Zenia",
+      "email": "zenia@gmail.com",
+      "password": "zeniaT18!",
+      "age": 17
     }
   ]
 }
