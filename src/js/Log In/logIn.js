@@ -32,7 +32,7 @@ const getUserInformation = async (URL) => {
   setupAge();
 };
 
-let newUser = {
+const newUser = {
   name: '',
   email: '',
   password: '',

@@ -15,46 +15,18 @@
       "id": "2"
     },
     {
-      "name": "Ilia",
-      "email": "",
-      "password": "3",
-      "age": "3",
-      "id": "4"
+      "id": "e030",
+      "name": "Andrii",
+      "email": "solomka@mail.com",
+      "password": "As12345!",
+      "age": "18"
     },
     {
-      "id": "c0be",
-      "name": "5",
-      "email": "5",
-      "password": "5",
-      "age": "5"
-    },
-    {
-      "id": "4",
-      "name": "7",
-      "email": "7",
-      "password": "7",
-      "age": "7"
-    },
-    {
-      "id": "77e8",
-      "name": "7",
-      "email": "7",
-      "password": "7",
-      "age": "7"
-    },
-    {
-      "id": "97e5",
-      "name": "andrii",
-      "email": "asolomka@nail.com",
-      "password": "AndriiSolomka!12",
-      "age": 18
-    },
-    {
-      "id": "20bc",
-      "name": "Zenia",
-      "email": "zenia@gmail.com",
-      "password": "zeniaT18!",
-      "age": 17
+      "id": "d552",
+      "name": "sssolomkaaa",
+      "email": "sssolomkaaa@mail.com",
+      "password": "12345Soloka!",
+      "age": "18"
     }
   ]
 }
