@@ -5,8 +5,8 @@ import {
   logInBtn,
   getUserName,
   signUpBtn,
-  hideAge,
-  hideEmail,
+  getUserAge,
+  getUserEmail,
   signInBtn,
   getUserPassword,
 } from '../const/const.js';
@@ -16,8 +16,11 @@ const getUserInformation = async (URL) => {
   const data = await getUserData(URL);
   const names = data.map((person) => person.name);
   const passwords = data.map((person) => person.password);
+  const emails = data.map((person) => person.email);
   setupNameInput(names);
   setupPassword(passwords);
+  setupEmail(emails);
+  setupAge();
 };
 
 let newUser = {
@@ -52,7 +55,7 @@ const setupPassword = (passwords) => {
     const inputPassword = event.target.value.trim();
     const isPasswordTaken = passwords.includes(inputPassword);
     const correctPassword = checkPassword(inputPassword);
-    console.log(inputPassword);
+
     if (!isPasswordTaken && correctPassword) {
       logInBtn.style.backgroundColor = '';
       newUser.password = inputPassword;
@@ -67,47 +70,123 @@ const checkPassword = (password) => {
     minLength: 8,
     maxLength: 20,
     specialChars: '!@#$%^&*()_+-=[]{};:\'"\\|,.<>/?',
+    hasUpperCase: false,
+    hasLowerCase: false,
+    hasNumber: false,
+    hasSpecialChar: false,
+    hasNeedLength: false,
+    hasSpace: false,
+    status: null,
   };
 
-  /*  if (
-    password.length < options.minLength ||
-    password.length > options.maxLength
-  ) {
-    return false;
+  const minLength = password.length >= options.minLength;
+  const maxLength = password.length <= options.maxLength;
+
+  if (minLength && maxLength) {
+    options.hasNeedLength = true;
   }
- */
-  let hasUpperCase = false;
-  let hasLowerCase = false;
-  let hasNumber = false;
-  let hasSpecialChar = false;
 
   for (const char of password) {
     if (char >= 'A' && char <= 'Z') {
-      hasUpperCase = true;
+      options.hasUpperCase = true;
     } else if (char >= 'a' && char <= 'z') {
-      hasLowerCase = true;
+      options.hasLowerCase = true;
     } else if (char >= '0' && char <= '9') {
-      hasNumber = true;
+      options.hasNumber = true;
     } else if (options.specialChars.includes(char)) {
-      hasSpecialChar = true;
+      options.hasSpecialChar = true;
+    } else if (char === ' ') {
+      options.hasSpace = true;
     }
   }
 
-  return hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
+  if (
+    options.hasUpperCase &&
+    options.hasLowerCase &&
+    options.hasNumber &&
+    options.hasSpecialChar &&
+    options.hasNeedLength &&
+    !options.hasSpace
+  ) {
+    options.status = true;
+  } else {
+    options.status = false;
+  }
+
+  return options.status;
+};
+
+const setupEmail = (emails) => {
+  getUserEmail.addEventListener('input', (event) => {
+    const inputEmail = event.target.value.trim();
+    const isEmailTaken = emails.includes(inputEmail);
+    const correctEmail = checkEmail(inputEmail);
+
+    if (!isEmailTaken && correctEmail) {
+      logInBtn.style.backgroundColor = '';
+      newUser.email = inputEmail;
+    } else {
+      logInBtn.style.backgroundColor = 'red';
+    }
+  });
+};
+
+const checkEmail = (email) => {
+  const options = {
+    maxLength: 50,
+    minLength: 2,
+    specialChars: '!#$%^&*()_+-=[]{};:\'"\\|,<>/?',
+    domain: 'ru',
+  };
+
+  const unCorrectChars =
+    options.specialChars && email.endsWith('.' + options.domain);
+
+  if (email.length > options.maxLength || email.length < options.minLength) {
+    return false;
+  } else if (unCorrectChars) {
+    return false;
+  } else if (!email.includes('@')) {
+    return false;
+  } else if (email.indexOf('@') > email.lastIndexOf('.')) {
+    return false;
+  }
+
+  return true;
+};
+
+const setupAge = () => {
+  getUserAge.addEventListener('input', (event) => {
+    const inputAge = Number(event.target.value.trim());
+
+    if (inputAge <= 100 && inputAge > 0) {
+      logInBtn.style.backgroundColor = '';
+      newUser.age = inputAge;
+    } else {
+      logInBtn.style.backgroundColor = 'red';
+    }
+  });
 };
 
 signUpBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  hideEmail.classList.toggle('hidden');
-  hideAge.classList.toggle('hidden');
+  getUserEmail.classList.toggle('hidden');
+  getUserAge.classList.toggle('hidden');
   signInBtn.classList.toggle('hidden');
   logInBtn.classList.toggle('hidden');
 });
 
-getUserInformation(URL);
+logInBtn.addEventListener('click', async () => {
+  try {
+    await fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(newUser),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-/* setTimeout(() => {
-  console.log(newUser);
-}, 8000); */
+getUserInformation(URL);
 
 export { setupNameInput };

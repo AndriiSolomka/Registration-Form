@@ -41,6 +41,13 @@
       "email": "7",
       "password": "7",
       "age": "7"
+    },
+    {
+      "id": "97e5",
+      "name": "andrii",
+      "email": "asolomka@nail.com",
+      "password": "AndriiSolomka!12",
+      "age": 18
     }
   ]
 }
