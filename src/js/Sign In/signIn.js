@@ -35,7 +35,9 @@ function checkUserData(data) {
       user.name === currentUser.username &&
       user.password === currentUser.password
     ) {
-      window.location.href = 'test.html';
+      localStorage.setItem('username', currentUser.username);
+      localStorage.setItem('password', currentUser.password);
+      window.location.href = './src/js/Next Page/test.html';
       found = true;
       break;
     }
