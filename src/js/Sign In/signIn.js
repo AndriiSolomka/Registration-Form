@@ -1,7 +1,7 @@
 'use strict';
 
 import {
-  URL,
+  base_URL,
   getUserName,
   getUserPassword,
   signInBtn,
@@ -24,7 +24,7 @@ getUserPassword.addEventListener('input', (event) => {
 
 signInBtn.addEventListener('click', async (event) => {
   event.preventDefault();
-  const data = await getUserData(URL);
+  const data = await getUserData(base_URL);
   checkUserData(data);
 });
 
