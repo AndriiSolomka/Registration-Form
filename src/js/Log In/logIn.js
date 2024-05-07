@@ -1,7 +1,7 @@
 'use strict';
 
 import {
-  URL,
+  base_URL,
   logInBtn,
   getUserName,
   signUpBtn,
@@ -10,7 +10,6 @@ import {
   signInBtn,
   getUserPassword,
 } from '../const/const.js';
-import { getUserData } from '../main/main.js';
 import { checkEmail, checkName, checkPassword } from './check.js';
 
 signUpBtn.addEventListener('click', (event) => {
@@ -21,17 +20,6 @@ signUpBtn.addEventListener('click', (event) => {
   logInBtn.classList.toggle('hidden');
 });
 
-const getUserInformation = async (URL) => {
-  const data = await getUserData(URL);
-  const names = data.map((person) => person.name);
-  const passwords = data.map((person) => person.password);
-  const emails = data.map((person) => person.email);
-  setupNameInput(names);
-  setupPassword(passwords);
-  setupEmail(emails);
-  setupAge();
-};
-
 const newUser = {
   name: '',
   email: '',
@@ -39,13 +27,12 @@ const newUser = {
   age: '',
 };
 
-const setupNameInput = (names) => {
+const setupNameInput = () => {
   getUserName.addEventListener('input', (event) => {
     const inputName = event.target.value.trim();
-    const isNameTaken = names.includes(inputName);
     const correctName = checkName(inputName);
 
-    if (!isNameTaken && correctName) {
+    if (correctName) {
       logInBtn.style.backgroundColor = '';
       newUser.name = inputName;
     } else {
@@ -53,14 +40,14 @@ const setupNameInput = (names) => {
     }
   });
 };
+setupNameInput();
 
-const setupPassword = (passwords) => {
+const setupPasswordInput = () => {
   getUserPassword.addEventListener('input', (event) => {
     const inputPassword = event.target.value.trim();
-    const isPasswordTaken = passwords.includes(inputPassword);
     const correctPassword = checkPassword(inputPassword);
 
-    if (!isPasswordTaken && correctPassword) {
+    if (correctPassword) {
       logInBtn.style.backgroundColor = '';
       newUser.password = inputPassword;
     } else {
@@ -68,14 +55,14 @@ const setupPassword = (passwords) => {
     }
   });
 };
+setupPasswordInput();
 
-const setupEmail = (emails) => {
+const setupEmailInput = () => {
   getUserEmail.addEventListener('input', (event) => {
     const inputEmail = event.target.value.trim();
-    const isEmailTaken = emails.includes(inputEmail);
     const correctEmail = checkEmail(inputEmail);
 
-    if (!isEmailTaken && correctEmail) {
+    if (correctEmail) {
       logInBtn.style.backgroundColor = '';
       newUser.email = inputEmail;
     } else {
@@ -83,8 +70,9 @@ const setupEmail = (emails) => {
     }
   });
 };
+setupEmailInput();
 
-const setupAge = () => {
+const setupAgeInput = () => {
   getUserAge.addEventListener('input', (event) => {
     const inputAge = Number(event.target.value.trim());
 
@@ -96,10 +84,11 @@ const setupAge = () => {
     }
   });
 };
+setupAgeInput();
 
 logInBtn.addEventListener('click', async () => {
   try {
-    await fetch(URL, {
+    await fetch(base_URL, {
       method: 'POST',
       body: JSON.stringify(newUser),
     });
@@ -108,5 +97,4 @@ logInBtn.addEventListener('click', async () => {
   }
 });
 
-getUserInformation(URL);
 export { setupNameInput };
