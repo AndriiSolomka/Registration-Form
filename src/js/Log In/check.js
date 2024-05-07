@@ -16,47 +16,54 @@ const checkPassword = (password) => {
     hasSpecialChar: false,
     hasNeedLength: false,
     hasSpace: false,
-    status: null,
   };
 
   const minLength = password.length >= options.minLength;
   const maxLength = password.length <= options.maxLength;
 
-  if (minLength && maxLength) {
-    options.hasNeedLength = true;
+  if (!minLength && !maxLength) {
+    return false;
   }
 
   for (const char of password) {
-    if (char >= 'A' && char <= 'Z') {
+    if (options.hasUpperCase === char >= 'A' && char <= 'Z') {
       options.hasUpperCase = true;
-    } else if (char >= 'a' && char <= 'z') {
+    }
+    if (char >= 'a' && char <= 'z') {
       options.hasLowerCase = true;
-    } else if (char >= '0' && char <= '9') {
+    }
+    if (char >= '0' && char <= '9') {
       options.hasNumber = true;
-    } else if (options.specialChars.includes(char)) {
+    }
+    if (options.specialChars.includes(char)) {
       options.hasSpecialChar = true;
-    } else if (char === ' ') {
+    }
+    if (char === ' ') {
       options.hasSpace = true;
     }
   }
 
-  if (
-    options.hasUpperCase &&
-    options.hasLowerCase &&
-    options.hasNumber &&
-    options.hasSpecialChar &&
-    options.hasNeedLength &&
-    !options.hasSpace
-  ) {
-    options.status = true;
-  } else {
-    options.status = false;
+  if (!options.hasLowerCase) {
+    return false;
   }
 
-  return options.status;
+  if (!options.hasNumber) {
+    return false;
+  }
+
+  if (!options.hasSpecialChar) {
+    return false;
+  }
+
+  if (options.hasSpace) {
+    return false;
+  }
+
+  return true;
 };
 
 const checkEmail = (email) => {
+  //del if
   const options = {
     maxLength: 50,
     minLength: 2,
@@ -67,13 +74,19 @@ const checkEmail = (email) => {
   const unCorrectChars =
     options.specialChars && email.endsWith('.' + options.domain);
 
-  if (email.length > options.maxLength || email.length < options.minLength) {
+  if (email.length > options.maxLength) {
     return false;
-  } else if (unCorrectChars) {
+  }
+  if (email.length < options.minLength) {
     return false;
-  } else if (!email.includes('@')) {
+  }
+  if (unCorrectChars) {
     return false;
-  } else if (email.indexOf('@') > email.lastIndexOf('.')) {
+  }
+  if (!email.includes('@')) {
+    return false;
+  }
+  if (email.indexOf('@') > email.lastIndexOf('.')) {
     return false;
   }
 
