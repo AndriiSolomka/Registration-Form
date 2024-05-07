@@ -34,6 +34,13 @@
       "email": "andriis@mail.com",
       "password": "12345As!",
       "age": "18"
+    },
+    {
+      "id": "68db",
+      "name": "AndriiBlackC",
+      "email": "AndriiBlackCock@gmail.ua",
+      "password": "AndriiBlackCock18!",
+      "age": "99"
     }
   ]
 }
