@@ -10,6 +10,7 @@ import {
   signInBtn,
   getUserPassword,
 } from '../const/const.js';
+import { getUserData } from '../main/main.js';
 import { checkEmail, checkName, checkPassword } from './check.js';
 
 signUpBtn.addEventListener('click', (event) => {
@@ -25,6 +26,7 @@ const newUser = {
   email: '',
   password: '',
   age: '',
+  id: '',
 };
 
 const setupNameInput = () => {
@@ -78,7 +80,7 @@ const setupAgeInput = () => {
 
     if (inputAge <= 100 && inputAge > 0) {
       logInBtn.style.backgroundColor = '';
-      newUser.age = String(inputAge);
+      newUser.age = inputAge;
     } else {
       logInBtn.style.backgroundColor = 'red';
     }
@@ -88,13 +90,29 @@ setupAgeInput();
 
 logInBtn.addEventListener('click', async () => {
   try {
-    await fetch(base_URL, {
-      method: 'POST',
-      body: JSON.stringify(newUser),
-    });
+    const allUsers = await getUserData(base_URL);
+    const registeredName = allUsers.map((person) => person.name);
+    const registeredEmail = allUsers.map((person) => person.email);
+    const userId = allUsers.map((person) => person.id);
+
+    if (
+      registeredName.includes(newUser.name) ||
+      registeredEmail.includes(newUser.email)
+    ) {
+      logInBtn.style.backgroundColor = 'red';
+    } else {
+      newUser.id = userId.at(-1) + 1;
+      fetch(base_URL, {
+        method: 'POST',
+        body: JSON.stringify(newUser),
+      });
+    }
   } catch (error) {
     console.error(error);
   }
 });
 
+setTimeout(() => {
+  console.log(newUser);
+}, 10000);
 export { setupNameInput };
