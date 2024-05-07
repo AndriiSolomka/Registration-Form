@@ -1,46 +1,11 @@
 {
   "posts": [
     {
-      "name": "1",
+      "id": 1,
+      "name": "",
       "email": "",
-      "password": "1",
-      "age": "1",
-      "id": "1"
-    },
-    {
-      "name": "2",
-      "email": "",
-      "password": "2",
-      "age": "2",
-      "id": "2"
-    },
-    {
-      "id": "e030",
-      "name": "Andrii",
-      "email": "solomka@mail.com",
-      "password": "As12345!",
-      "age": "18"
-    },
-    {
-      "id": "d552",
-      "name": "sssolomkaaa",
-      "email": "sssolomkaaa@mail.com",
-      "password": "12345Soloka!",
-      "age": "18"
-    },
-    {
-      "id": "e6da",
-      "name": "AndriiS",
-      "email": "andriis@mail.com",
-      "password": "12345As!",
-      "age": "18"
-    },
-    {
-      "id": "68db",
-      "name": "AndriiBlackC",
-      "email": "AndriiBlackCock@gmail.ua",
-      "password": "AndriiBlackCock18!",
-      "age": "99"
+      "password": "",
+      "age": ""
     }
   ]
 }

@@ -24,13 +24,14 @@ getUserPassword.addEventListener('input', (event) => {
 
 signInBtn.addEventListener('click', async (event) => {
   event.preventDefault();
-  const data = await getUserData(base_URL);
-  checkUserData(data);
+  checkUserData(currentUser);
 });
 
-function checkUserData(data) {
+const checkUserData = async (currentUser) => {
+  const allUsers = await getUserData(base_URL);
+
   let found = false;
-  for (const user of data) {
+  for (const user of allUsers) {
     if (
       user.name === currentUser.username &&
       user.password === currentUser.password
@@ -45,7 +46,7 @@ function checkUserData(data) {
   if (!found) {
     signUp();
   }
-}
+};
 
 function signUp() {
   setTimeout(() => {
