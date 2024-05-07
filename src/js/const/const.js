@@ -1,6 +1,6 @@
 'use strict';
 
-const URL = 'http://localhost:3000/posts';
+const base_URL = 'http://localhost:3000/posts';
 const getUserName = document.querySelector('#username');
 const getUserPassword = document.querySelector('#password');
 const signInBtn = document.querySelector('#signinStatus');
@@ -11,7 +11,7 @@ const logInBtn = document.querySelector('#loginStatus');
 const errorText = document.querySelector('#ErrorText');
 
 export {
-  URL,
+  base_URL,
   getUserName,
   getUserPassword,
   signUpBtn,

@@ -1,10 +1,11 @@
 'use strict';
 
-import { URL } from '../const/const.js';
+import { base_URL } from '../const/const.js'; //ЮРЛ
 
-const getUserData = async (URL) => {
+const getUserData = async (url) => {
+  //юрл
   try {
-    const response = await fetch(URL);
+    const response = await fetch(url);
     const data = await response.json();
     console.log(data);
     return data;
@@ -13,5 +14,5 @@ const getUserData = async (URL) => {
   }
 };
 
-getUserData(URL);
+getUserData(base_URL);
 export { getUserData };
