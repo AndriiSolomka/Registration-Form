@@ -109,7 +109,7 @@ span,
 }
 
 .custom-checkbox:checked {
-  background-color: rgba(17, 97, 237, 1);
+  background-color: rgba(17, 97, 237, 2);
 }
 
 .custom-checkbox:checked:after {
