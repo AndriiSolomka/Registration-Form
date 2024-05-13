@@ -9,6 +9,8 @@ const getUserEmail = document.querySelector('#email');
 const getUserAge = document.querySelector('#age');
 const logInBtn = document.querySelector('#loginStatus');
 const errorText = document.querySelector('#ErrorText');
+const passwordBtn = document.querySelector('#passwordGenerator');
+const passwordLength = 12;
 
 export {
   base_URL,
@@ -20,4 +22,6 @@ export {
   getUserAge,
   logInBtn,
   errorText,
+  passwordBtn,
+  passwordLength,
 };
