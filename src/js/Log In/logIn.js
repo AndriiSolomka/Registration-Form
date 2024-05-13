@@ -9,9 +9,13 @@ import {
   getUserEmail,
   signInBtn,
   getUserPassword,
+  passwordBtn,
+  passwordLength,
 } from '../const/const.js';
 import { getUserData } from '../main/main.js';
 import { checkEmail, checkName, checkPassword } from './check.js';
+import { generatePassword } from './randomPassword.js';
+//console.log(generatePassword(12));
 
 signUpBtn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -19,6 +23,7 @@ signUpBtn.addEventListener('click', (event) => {
   getUserAge.classList.toggle('hidden');
   signInBtn.classList.toggle('hidden');
   logInBtn.classList.toggle('hidden');
+  passwordBtn.classList.toggle('hidden');
 });
 
 const newUser = {
@@ -59,6 +64,19 @@ const setupPasswordInput = () => {
 };
 setupPasswordInput();
 
+const doGenerate = () => {
+  const passwordField = document.getElementById('password');
+
+  passwordBtn.addEventListener('click', () => {
+    const generatedPassword = generatePassword(passwordLength);
+    newUser.password = generatedPassword;
+    passwordField.type = 'text';
+    passwordField.value = generatedPassword;
+  });
+};
+
+doGenerate();
+
 const setupEmailInput = () => {
   getUserEmail.addEventListener('input', (event) => {
     const inputEmail = event.target.value.trim();
@@ -93,8 +111,7 @@ logInBtn.addEventListener('click', async () => {
     const allUsers = await getUserData(base_URL);
     const registeredName = allUsers.map((person) => person.name);
     const registeredEmail = allUsers.map((person) => person.email);
-    const userId = allUsers.map((person) => person.id);
-
+    const userId = allUsers.map((person) => parseFloat(person.id));
     if (
       registeredName.includes(newUser.name) ||
       registeredEmail.includes(newUser.email)
