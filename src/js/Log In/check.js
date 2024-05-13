@@ -63,7 +63,6 @@ const checkPassword = (password) => {
 };
 
 const checkEmail = (email) => {
-  //del if
   const options = {
     maxLength: 50,
     minLength: 2,

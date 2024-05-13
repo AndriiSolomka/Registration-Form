@@ -1,11 +1,46 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "name": "",
       "email": "",
       "password": "",
       "age": ""
+    },
+    {
+      "id": "11",
+      "name": "solomka",
+      "email": "asolomka@nail.com",
+      "password": "",
+      "age": 18
+    },
+    {
+      "id": "111",
+      "name": "AndriiS",
+      "email": "sssolomkaaa@mail.com",
+      "password": "",
+      "age": 12
+    },
+    {
+      "id": 112,
+      "name": "sssolomkaaa",
+      "email": "asolomka@nail.com.",
+      "password": "",
+      "age": 12
+    },
+    {
+      "id": 113,
+      "name": "ZiniaZ",
+      "email": "zeniaZ@negr.com",
+      "password": "",
+      "age": 17
+    },
+    {
+      "id": 114,
+      "name": "Zenia",
+      "email": "sssoliiiiomkaaa@mail.com",
+      "password": "5f6$Tbi1TNcr",
+      "age": 18
     }
   ]
 }
