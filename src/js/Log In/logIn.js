@@ -1,7 +1,7 @@
 'use strict';
 
 import {
-  base_URL,
+  LOGIN_URL,
   logInBtn,
   getUserName,
   signUpBtn,
@@ -12,10 +12,8 @@ import {
   passwordBtn,
   passwordLength,
 } from '../const/const.js';
-import { getUserData } from '../main/main.js';
 import { checkEmail, checkName, checkPassword } from './check.js';
 import { generatePassword } from './randomPassword.js';
-//console.log(generatePassword(12));
 
 signUpBtn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -27,11 +25,10 @@ signUpBtn.addEventListener('click', (event) => {
 });
 
 const newUser = {
-  name: '',
+  username: '',
   email: '',
   password: '',
   age: '',
-  id: '',
 };
 
 const setupNameInput = () => {
@@ -41,7 +38,7 @@ const setupNameInput = () => {
 
     if (correctName) {
       logInBtn.style.backgroundColor = '';
-      newUser.name = inputName;
+      newUser.username = inputName;
     } else {
       logInBtn.style.backgroundColor = 'red';
     }
@@ -74,7 +71,6 @@ const doGenerate = () => {
     passwordField.value = generatedPassword;
   });
 };
-
 doGenerate();
 
 const setupEmailInput = () => {
@@ -107,29 +103,16 @@ const setupAgeInput = () => {
 setupAgeInput();
 
 logInBtn.addEventListener('click', async () => {
-  try {
-    const allUsers = await getUserData(base_URL);
-    const registeredName = allUsers.map((person) => person.name);
-    const registeredEmail = allUsers.map((person) => person.email);
-    const userId = allUsers.map((person) => parseFloat(person.id));
-    if (
-      registeredName.includes(newUser.name) ||
-      registeredEmail.includes(newUser.email)
-    ) {
-      logInBtn.style.backgroundColor = 'red';
-    } else {
-      newUser.id = userId.at(-1) + 1;
-      fetch(base_URL, {
-        method: 'POST',
-        body: JSON.stringify(newUser),
-      });
-    }
-  } catch (error) {
-    console.error(error);
-  }
+  checkUserData(newUser);
 });
 
-setTimeout(() => {
-  console.log(newUser);
-}, 10000);
-export { setupNameInput };
+const checkUserData = async (newUser) => {
+  const response = await fetch(LOGIN_URL, {
+    method: 'POST',
+    body: JSON.stringify(newUser),
+  });
+
+  if (response.ok) {
+    alert('Такий юзер вже є');
+  } 
+};

@@ -1,13 +1,12 @@
 'use strict';
 
 import {
-  base_URL,
+  SIGN_URL,
   getUserName,
   getUserPassword,
   signInBtn,
   signUpBtn,
 } from '../const/const.js';
-import { getUserData } from '../main/main.js';
 
 const currentUser = {
   username: '',
@@ -28,22 +27,14 @@ signInBtn.addEventListener('click', async (event) => {
 });
 
 const checkUserData = async (currentUser) => {
-  const allUsers = await getUserData(base_URL);
+  const response = await fetch(SIGN_URL, {
+    method: 'POST',
+    body: JSON.stringify(currentUser),
+  });
 
-  let found = false;
-  for (const user of allUsers) {
-    if (
-      user.name === currentUser.username &&
-      user.password === currentUser.password
-    ) {
-      localStorage.setItem('username', currentUser.username);
-      localStorage.setItem('password', currentUser.password);
-      window.location.href = './src/js/Next Page/test.html';
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
+  if (response.ok) {
+    window.location.href = './src/js/Next Page/test.html';
+  } else {
     signUp();
   }
 };
