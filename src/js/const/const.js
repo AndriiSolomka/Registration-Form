@@ -1,6 +1,7 @@
 'use strict';
 
-const base_URL = 'http://localhost:3000/posts';
+const SIGN_URL = 'http://localhost:8000/users';
+const LOGIN_URL = 'http://localhost:9000/users';
 const getUserName = document.querySelector('#username');
 const getUserPassword = document.querySelector('#password');
 const signInBtn = document.querySelector('#signinStatus');
@@ -10,10 +11,11 @@ const getUserAge = document.querySelector('#age');
 const logInBtn = document.querySelector('#loginStatus');
 const errorText = document.querySelector('#ErrorText');
 const passwordBtn = document.querySelector('#passwordGenerator');
-const passwordLength = 12;
+const passwordLength = 19;
 
 export {
-  base_URL,
+  SIGN_URL,
+  LOGIN_URL,
   getUserName,
   getUserPassword,
   signUpBtn,
