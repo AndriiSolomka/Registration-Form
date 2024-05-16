@@ -8,21 +8,21 @@ const generatePassword = (passwordLength) => {
     symbolChars: '!@#$%^&*()_+',
   };
 
-  const allChars =
-    options.numberChars +
-    options.upperChars +
-    options.lowerChars +
-    options.symbolChars;
+  const allChars = Object.values(options).join('');
   const allCharsLength = allChars.length;
 
+  const getRandomChar = (characters) => {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    return characters.charAt(randomIndex);
+  };
+
   let randomString = '';
+  const reservedChars = Object.keys(options).length; 
 
-  randomString += getRandomChar(options.numberChars);
-  randomString += getRandomChar(options.upperChars);
-  randomString += getRandomChar(options.lowerChars);
-  randomString += getRandomChar(options.symbolChars);
+  for (const chars of Object.values(options)) {
+    randomString += getRandomChar(chars);
+  }
 
-  let reservedChars = 4;
   for (let i = reservedChars; i < passwordLength; i++) {
     randomString += allChars.charAt(Math.floor(Math.random() * allCharsLength));
   }
@@ -30,11 +30,6 @@ const generatePassword = (passwordLength) => {
   randomString = shuffleString(randomString);
 
   return randomString;
-};
-
-const getRandomChar = (characters) => {
-  const randomIndex = Math.floor(Math.random() * characters.length);
-  return characters.charAt(randomIndex);
 };
 
 const shuffleString = (string) => {
