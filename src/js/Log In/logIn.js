@@ -11,6 +11,7 @@ import {
   getUserPassword,
   passwordBtn,
   passwordLength,
+  botCheckBTN,
 } from '../const/const.js';
 import { checkEmail, checkName, checkPassword } from './check.js';
 import { generatePassword } from './randomPassword.js';
@@ -22,6 +23,8 @@ signUpBtn.addEventListener('click', (event) => {
   signInBtn.classList.toggle('hidden');
   logInBtn.classList.toggle('hidden');
   passwordBtn.classList.toggle('hidden');
+  logInBtn.style.opacity = '0.5';
+  logInBtn.style.pointerEvents = 'none';
 });
 
 const newUser = {
@@ -37,11 +40,11 @@ const setupNameInput = () => {
     const correctName = checkName(inputName);
 
     if (correctName) {
-      logInBtn.style.backgroundColor = '';
       newUser.username = inputName;
     } else {
-      logInBtn.style.backgroundColor = 'red';
+      newUser.username = '';
     }
+    validateForm();
   });
 };
 setupNameInput();
@@ -52,11 +55,9 @@ const setupPasswordInput = () => {
     const correctPassword = checkPassword(inputPassword);
 
     if (correctPassword) {
-      logInBtn.style.backgroundColor = '';
       newUser.password = inputPassword;
-    } else {
-      logInBtn.style.backgroundColor = 'red';
     }
+    validateForm();
   });
 };
 setupPasswordInput();
@@ -79,11 +80,9 @@ const setupEmailInput = () => {
     const correctEmail = checkEmail(inputEmail);
 
     if (correctEmail) {
-      logInBtn.style.backgroundColor = '';
       newUser.email = inputEmail;
-    } else {
-      logInBtn.style.backgroundColor = 'red';
     }
+    validateForm();
   });
 };
 setupEmailInput();
@@ -91,16 +90,37 @@ setupEmailInput();
 const setupAgeInput = () => {
   getUserAge.addEventListener('input', (event) => {
     const inputAge = Number(event.target.value.trim());
-
-    if (inputAge <= 100 && inputAge > 0) {
-      logInBtn.style.backgroundColor = '';
+    if (inputAge < 100 && inputAge > 5) {
       newUser.age = inputAge;
-    } else {
-      logInBtn.style.backgroundColor = 'red';
     }
+    validateForm();
   });
 };
 setupAgeInput();
+
+const validateForm = (human) => {
+  const { username, email, password, age } = newUser;
+  if (username && email && password && age) {
+    botCheckBTN.classList.toggle('hidden');
+    if (human) {
+      doBtnOn();
+    }
+  } else {
+    doBtnOff();
+  }
+};
+
+const doBtnOn = () => {
+  logInBtn.disabled = false;
+  logInBtn.style.pointerEvents = 'auto';
+  logInBtn.style.opacity = '1';
+};
+
+const doBtnOff = () => {
+  logInBtn.disabled = true;
+  logInBtn.style.pointerEvents = 'none';
+  logInBtn.style.opacity = '0.5';
+};
 
 logInBtn.addEventListener('click', async () => {
   checkUserData(newUser);
@@ -114,5 +134,7 @@ const checkUserData = async (newUser) => {
 
   if (response.ok) {
     alert('Такий юзер вже є');
-  } 
+  }
 };
+
+export { validateForm };
