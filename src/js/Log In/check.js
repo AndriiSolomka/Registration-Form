@@ -43,6 +43,10 @@ const checkPassword = (password) => {
     }
   }
 
+  if (!options.hasUpperCase) {
+    return false;
+  }
+
   if (!options.hasLowerCase) {
     return false;
   }
