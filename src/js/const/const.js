@@ -11,6 +11,12 @@ const getUserAge = document.querySelector('#age');
 const logInBtn = document.querySelector('#loginStatus');
 const errorText = document.querySelector('#ErrorText');
 const passwordBtn = document.querySelector('#passwordGenerator');
+const botCheckBTN = document.querySelector('#botCheck');
+const animalCheck = document.querySelectorAll(
+  '#animalContainer div, #animalContainer h3, #animalContainer table',
+);
+const img = document.createElement('img');
+const regForm = document.querySelector('.login');
 const passwordLength = 19;
 
 export {
@@ -26,4 +32,8 @@ export {
   errorText,
   passwordBtn,
   passwordLength,
+  botCheckBTN,
+  animalCheck,
+  img,
+  regForm,
 };

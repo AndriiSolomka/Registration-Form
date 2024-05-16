@@ -1,36 +1,28 @@
 {
   "users": [
-    { "username": "", "email": "", "password": "", "age": "" },
+    {
+      "username": "zenia",
+      "email": "asolomka@nail.com",
+      "password": "!LOe$k8Nn6&CRZRe7ZS",
+      "age": 18
+    },
+    {
+      "username": "zeniawhite",
+      "email": "zenia@mail.ua",
+      "password": "vZ^2XCn3(1+sywXQiv9",
+      "age": 1
+    },
     {
       "username": "solomka",
       "email": "asolomka@nail.com",
-      "password": "i1#BC_f#CdhSGa04R7r",
-      "age": 18
+      "password": "vB$d0SLr(!R&nrL)5hT",
+      "age": 12
     },
     {
-      "username": "solomkaaa",
-      "email": "asolomka@nailaa.com",
-      "password": "1D#sNRhxFoo_^QwdLX6",
-      "age": 18
-    },
-    { "username": "Andrii", "email": "", "password": "", "age": "" },
-    {
-      "username": "solomkasas",
-      "email": "asolomka@nawil.com",
-      "password": "@2v+bsiYLvP$9lGWpPD",
-      "age": 18
-    },
-    {
-      "username": "solomkaaaa",
-      "email": "asolomka@nail.comaaa",
-      "password": "uZ61O_0iaz5WnTjN0LO",
-      "age": 18
-    },
-    {
-      "username": "sssolomkaaa",
-      "email": "sssolomkaaa@mail.com",
-      "password": "CoJ8DM(N)ef#g@h*NgU",
-      "age": 18
+      "username": "sssolomkaa",
+      "email": "asolomka@naail.com",
+      "password": "qZe7y+Vy+gvYp0Iy2AF",
+      "age": 12
     }
   ]
 }

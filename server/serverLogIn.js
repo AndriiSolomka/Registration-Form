@@ -47,7 +47,7 @@ const checkData = (data, res) => {
         res.end();
       } else {
         allUsers.users.push(data);
-        fs.writeFile('db.json', JSON.stringify(allUsers), (error) => {
+        fs.writeFile('db.json', JSON.stringify(allUsers, null, 2), (error) => {
           if (error) {
             res.statusCode = 500;
             res.end(JSON.stringify({ error: 'Error download file' }));

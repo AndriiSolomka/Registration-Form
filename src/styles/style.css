@@ -9,7 +9,7 @@ body,
 
 .login {
   position: relative;
-  height: 560px;
+  height: 650px;
   width: 405px;
   margin: auto;
   padding: 60px 60px;
@@ -227,6 +227,24 @@ label {
   outline: none;
 }
 
+.botCheckBTN {
+  background-color: #087020;
+  color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  border: none;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.botCheckBTN:hover {
+  background-color: #2b863a;
+}
+
 hr {
   border: 1px solid rgba(255, 255, 255, 0.1);
   top: 85px;
@@ -243,5 +261,71 @@ a {
 }
 
 .hidden {
+  display: none;
+}
+
+#animalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#animalTable {
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#animalTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#animalTable td:hover {
+  background-color: #f0f0f0;
+}
+
+#animalTable {
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+}
+
+#animalTable td {
+  background-color: #5ca134;
+  transition: background-color 0.3s ease;
+}
+
+#animalTable td:hover {
+  background-color: #f0f8ff;
+}
+
+#imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#imageContainer img {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+#animalContainer h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+}
+
+#animalContainer div,
+#animalContainer h3,
+#animalContainer table {
   display: none;
 }
