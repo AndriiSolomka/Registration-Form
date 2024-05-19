@@ -42,7 +42,7 @@ const checkData = (data, res) => {
       const passwordInBase = allUsers.users.some(
         (person) => person.password === data.password,
       );
-      if (nameInBase && passwordInBase) {
+      if (nameInBase || passwordInBase) {
         res.statusCode = 200;
         res.end();
       } else {
