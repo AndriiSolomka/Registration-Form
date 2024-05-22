@@ -45,6 +45,7 @@ checkValue.addEventListener('click', (event) => {
       validateForm(false);
 
       if (reloadCount === 4) {
+        alert('Ти бот!');
         regForm.style.opacity = '0';
         regForm.style.pointerEvents = 'none';
       }
