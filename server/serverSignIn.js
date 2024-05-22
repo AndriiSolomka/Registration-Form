@@ -4,6 +4,7 @@ const http = require('http');
 const host = 'localhost';
 const port = 8000;
 const fs = require('fs');
+const pathToBase = '../usersBase/db.json'
 
 const requestListener = async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -30,7 +31,7 @@ const requestListener = async (req, res) => {
 };
 
 const checkData = (data, res) => {
-  fs.readFile('db.json', 'utf8', (error, fileContent) => {
+  fs.readFile(pathToBase, 'utf8', (error, fileContent) => {
     if (error) {
       res.statusCode = 500;
       res.end(JSON.stringify({ error: 'Error read file' }));

@@ -4,6 +4,7 @@ const http = require('http');
 const host = 'localhost';
 const port = 9000;
 const fs = require('fs');
+const pathToBase = '../usersBase/db.json'
 
 const requestListener = async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -30,7 +31,7 @@ const requestListener = async (req, res) => {
 };
 
 const checkData = (data, res) => {
-  fs.readFile('db.json', 'utf8', (error, fileContent) => {
+  fs.readFile(pathToBase, 'utf8', (error, fileContent) => {
     if (error) {
       res.statusCode = 500;
       res.end(JSON.stringify({ error: 'Error reading file' }));
@@ -39,15 +40,15 @@ const checkData = (data, res) => {
       const nameInBase = allUsers.users.some(
         (person) => person.username === data.username,
       );
-      const passwordInBase = allUsers.users.some(
-        (person) => person.password === data.password,
+      const emailInBase = allUsers.users.some(
+        (person) => person.email === data.email,
       );
-      if (nameInBase || passwordInBase) {
+      if (nameInBase || emailInBase) {
         res.statusCode = 200;
         res.end();
       } else {
         allUsers.users.push(data);
-        fs.writeFile('db.json', JSON.stringify(allUsers, null, 2), (error) => {
+        fs.writeFile(pathToBase, JSON.stringify(allUsers, null, 2), (error) => {
           if (error) {
             res.statusCode = 500;
             res.end(JSON.stringify({ error: 'Error download file' }));
