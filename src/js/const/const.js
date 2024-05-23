@@ -1,7 +1,7 @@
 'use strict';
 
-const SIGN_URL = 'http://localhost:8000/users';
-const LOGIN_URL = 'http://localhost:9000/users';
+const SIGN_URL = 'http://localhost:9000/signin';
+const LOGIN_URL = 'http://localhost:9000/login';
 const getUserName = document.querySelector('#username');
 const getUserPassword = document.querySelector('#password');
 const signInBtn = document.querySelector('#signinStatus');
