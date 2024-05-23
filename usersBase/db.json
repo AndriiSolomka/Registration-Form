@@ -2,33 +2,9 @@
   "users": [
     {
       "username": "zenia",
-      "email": "asolomka@nail.com",
+      "email": "asolomka@mail.com",
       "password": "!LOe$k8Nn6&CRZRe7ZS",
       "age": 18
-    },
-    {
-      "username": "zeniawhite",
-      "email": "zenia@mail.ua",
-      "password": "vZ^2XCn3(1+sywXQiv9",
-      "age": 1
-    },
-    {
-      "username": "solomka",
-      "email": "asolomka@nail.com",
-      "password": "vB$d0SLr(!R&nrL)5hT",
-      "age": 12
-    },
-    {
-      "username": "sssolomkaa",
-      "email": "asolomka@naail.com",
-      "password": "qZe7y+Vy+gvYp0Iy2AF",
-      "age": 12
-    },
-    {
-      "username": "sssolomkaaa",
-      "email": "asolomka@nail.com22",
-      "password": "lPO4grNG+NU1$Lj1my2",
-      "age": 8
     }
   ]
 }
