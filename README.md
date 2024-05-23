@@ -36,7 +36,13 @@ A simple and effective registration form built using HTML, CSS, and JavaScript.
 1. Fill in the required fields.
 2. Submit the form to see the validation in action.
 
+## Video Demo
+
+[![Registration Form Demo](https://img.youtube.com/vi/P4kVF1beaHA/0.jpg)](https://youtu.be/P4kVF1beaHA)
+
+Click on the image above to watch the demo of the Registration Form.
+
 ## Contact
 
-Andrii Solomka - [asolomka252@gmail.com](mailto:your-email@example.com)
+Andrii Solomka - [andriissolomka@gmail.com](mailto:your-email@example.com)
 
