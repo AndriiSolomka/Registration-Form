@@ -134,6 +134,8 @@ const checkUserData = async (newUser) => {
   });
 
   if (response.ok) {
+    location.reload();
+  } else {
     alert('Такий юзер вже є');
   }
 };
