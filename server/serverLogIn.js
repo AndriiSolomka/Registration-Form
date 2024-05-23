@@ -4,7 +4,7 @@ const http = require('http');
 const host = 'localhost';
 const port = 9000;
 const fs = require('fs');
-const pathToBase = '../usersBase/db.json'
+const pathToBase = '../usersBase/db.json';
 
 const requestListener = async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -44,7 +44,7 @@ const checkData = (data, res) => {
         (person) => person.email === data.email,
       );
       if (nameInBase || emailInBase) {
-        res.statusCode = 200;
+        res.statusCode = 409;
         res.end();
       } else {
         allUsers.users.push(data);
@@ -52,6 +52,9 @@ const checkData = (data, res) => {
           if (error) {
             res.statusCode = 500;
             res.end(JSON.stringify({ error: 'Error download file' }));
+          } else {
+            res.statusCode = 200;
+            res.end();
           }
         });
       }
