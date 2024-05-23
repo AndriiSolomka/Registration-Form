@@ -17,13 +17,13 @@ A simple and effective registration form built using HTML, CSS, and JavaScript.
 
 2. **Start the server:**
 
-    Open terminal and start `serverSignIn.js`:
+    Open terminal from folder `server` and start `serverSignIn.js`:
 
     ```sh
     node ./server/serverSignIn.js
     ```
 
-    Open terminal and start `serverLogIn.js`:
+    Open terminal from folder `server` and start `serverLogIn.js`:
 
     ```sh
     node ./server/serverLogIn.js
