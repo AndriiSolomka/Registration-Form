@@ -15,7 +15,21 @@ A simple and effective registration form built using HTML, CSS, and JavaScript.
     git clone https://github.com/AndriiSolomka/Registration-Form.git
     ```
 
-2. **Open `index.html` in your browser to view the form.**
+2. **Start the server:**
+
+    Open terminal and start `serverSignIn.js`:
+
+    ```sh
+    node ./server/serverSignIn.js
+    ```
+
+    Open terminal and start `serverLogIn.js`:
+
+    ```sh
+    node ./server/serverLogIn.js
+    ```
+    
+3. **Open `index.html` in your browser to view the form.**
 
 ## Usage
 
