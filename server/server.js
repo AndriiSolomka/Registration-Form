@@ -1,9 +1,9 @@
 'use strict';
 
 const http = require('http');
+const fs = require('fs');
 const host = 'localhost';
 const port = 9000;
-const fs = require('fs');
 const pathToBase = '../usersBase/db.json';
 
 const requestListener = async (req, res) => {
@@ -20,15 +20,14 @@ const requestListener = async (req, res) => {
     req.on('end', () => {
       try {
         const userData = JSON.parse(body);
-        console.log(userData);
-        if (req.url === '/login') {
-          handleRegister(userData, res);
-        } else if (req.url === '/signin') {
-          handleLogin(userData, res);
-        } else {
-          res.statusCode = 404;
-          res.end(JSON.stringify({ error: 'Not Found' }));
-        }
+
+        const handlersByUrl = {
+          '/login': handleSignIn,
+          '/signin': handleLogin,
+        };
+
+        const handler = handlersByUrl[req.url];
+        return handler ? handler(userData, res) : handleNotFoundResource(res);
       } catch (error) {
         console.error('Error parsing JSON:', error);
         res.statusCode = 400;
@@ -41,7 +40,12 @@ const requestListener = async (req, res) => {
   }
 };
 
-const handleRegister = (data, res) => {
+const handleNotFoundResource = (res) => {
+  res.statusCode = 404;
+  res.end(JSON.stringify({ error: 'Not Found' }));
+};
+
+const handleSignIn = (data, res) => {
   fs.readFile(pathToBase, 'utf8', (error, fileContent) => {
     if (error) {
       res.statusCode = 500;
