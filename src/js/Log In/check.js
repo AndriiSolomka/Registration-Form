@@ -10,41 +10,23 @@ const checkPassword = (password) => {
     minLength: 8,
     maxLength: 20,
     specialChars: /[!@#$%^&*()_+\-=[\]{};:'"\\|,.<>/?]/,
-    hasUpperCase: false,
-    hasLowerCase: false,
-    hasNumber: false,
-    hasSpace: false,
+    hasUpperCase: /[A-Z]/,
+    hasLowerCase: /[a-z]/,
+    hasNumber: /[0-9]/,
+    hasSpace: /\s/,
   };
 
-  if (password.length < options.minLength) {
-    return false;
-  }
+  const checks = [
+    password.length >= options.minLength,
+    password.length <= options.maxLength,
+    options.hasUpperCase.test(password),
+    options.hasLowerCase.test(password),
+    options.hasNumber.test(password),
+    options.specialChars.test(password),
+    !options.hasSpace.test(password),
+  ];
 
-  if (password.length > options.maxLength) {
-    return false;
-  }
-
-  if (options.hasUpperCase === /[A-Z]/.test(password)) {
-    return false;
-  }
-
-  if (options.hasLowerCase === /[a-z]/.test(password)) {
-    return false;
-  }
-
-  if (options.hasNumber === /[0-9]/.test(password)) {
-    return false;
-  }
-
-  if (!options.specialChars.test(password)) {
-    return false;
-  }
-
-  if (options.hasSpace !== /\s/.test(password)) {
-    return false;
-  }
-
-  return true;
+  return checks.every(Boolean);
 };
 
 const checkEmail = (email) => {
@@ -55,32 +37,16 @@ const checkEmail = (email) => {
     domain: 'ru',
   };
 
-  if (email.length > options.maxLength) {
-    return false;
-  }
+  const checks = [
+    email.length <= options.maxLength,
+    email.length >= options.minLength,
+    !options.specialChars.test(email),
+    !email.endsWith(`.${options.domain}`),
+    email.includes('@'),
+    email.indexOf('@') < email.lastIndexOf('.'),
+  ];
 
-  if (email.length < options.minLength) {
-    return false;
-  }
-
-  if (options.specialChars.test(email)) {
-    return false;
-  }
-
-  if (email.endsWith('.' + options.domain)) {
-    console.log(1);
-    return false;
-  }
-
-  if (!email.includes('@')) {
-    return false;
-  }
-
-  if (email.indexOf('@') > email.lastIndexOf('.')) {
-    return false;
-  }
-
-  return true;
+  return checks.every(Boolean);
 };
 
 export { checkName, checkEmail, checkPassword };
