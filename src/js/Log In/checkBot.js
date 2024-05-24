@@ -31,24 +31,20 @@ container.appendChild(img);
 
 const checkValue = document.querySelector('#animalTable');
 
-let reloadCount = 0;
 checkValue.addEventListener('click', (event) => {
   if (event.target.tagName === 'TD') {
-    const animalName = event.target.innerText.toLowerCase();
-    if (animalName === randomAnimal.split('.')[0].toLowerCase()) {
+    const animalTableName = event.target.innerText.toLowerCase();
+    const animalPictureName = randomAnimal.split('.')[0].toLowerCase();
+    if (animalTableName === animalPictureName) {
       validateForm(true);
       for (let i = 0; i < animalCheck.length; i++) {
         animalCheck[i].style.display = 'none';
       }
     } else {
-      reloadCount++;
       validateForm(false);
-
-      if (reloadCount === 4) {
-        alert('Ти бот!');
-        regForm.style.opacity = '0';
-        regForm.style.pointerEvents = 'none';
-      }
+      regForm.style.opacity = '0';
+      regForm.style.pointerEvents = 'none';
+      alert('Ти бот!');
     }
   }
 });
