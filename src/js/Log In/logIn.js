@@ -101,7 +101,6 @@ setupAgeInput();
 const validateForm = (human) => {
   const { username, email, password, age } = newUser;
   if (username && email && password && age) {
-    console.log(1);
     botCheckBTN.classList.toggle('hidden');
     if (human) {
       doBtnOn();
