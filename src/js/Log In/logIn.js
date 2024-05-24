@@ -41,8 +41,6 @@ const setupNameInput = () => {
 
     if (correctName) {
       newUser.username = inputName;
-    } else {
-      newUser.username = '';
     }
     validateForm();
   });
@@ -90,7 +88,9 @@ setupEmailInput();
 const setupAgeInput = () => {
   getUserAge.addEventListener('input', (event) => {
     const inputAge = Number(event.target.value.trim());
-    if (inputAge < 100 && inputAge > 5) {
+    const minAge = 5;
+    const maxAge = 100;
+    if (inputAge < maxAge && inputAge > minAge) {
       newUser.age = inputAge;
     }
     validateForm();
@@ -132,11 +132,7 @@ const checkUserData = async (newUser) => {
     body: JSON.stringify(newUser),
   });
 
-  if (response.ok) {
-    location.reload();
-  } else {
-    alert('Такий юзер вже є');
-  }
+  response.ok ? location.reload() : alert('Такий юзер вже є');
 };
 
 export { validateForm };
