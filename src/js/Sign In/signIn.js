@@ -23,7 +23,7 @@ getUserPassword.addEventListener('input', (event) => {
 
 signInBtn.addEventListener('click', async (event) => {
   event.preventDefault();
-  checkUserData(currentUser);
+  await checkUserData(currentUser);
 });
 
 const checkUserData = async (currentUser) => {
@@ -32,14 +32,12 @@ const checkUserData = async (currentUser) => {
     body: JSON.stringify(currentUser),
   });
 
-  if (response.ok) {
-    window.location.href = './src/js/Next Page/test.html';
-  } else {
-    signUp();
-  }
+  const nextPage = (window.location.href = './src/js/Next Page/test.html');
+
+  response.ok ? nextPage : signUp();
 };
 
-function signUp() {
+const signUp = () => {
   setTimeout(() => {
     signUpBtn.style.backgroundColor = 'green';
   }, 8000);
@@ -51,4 +49,4 @@ function signUp() {
 
   getUserName.style.backgroundColor = '#c97575';
   getUserPassword.style.backgroundColor = '#c97575';
-}
+};
