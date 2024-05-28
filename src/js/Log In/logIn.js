@@ -27,13 +27,16 @@ signUpBtn.addEventListener('click', (event) => {
     passwordBtn,
   ];
 
-  elementsToToggle.forEach((element) => element.classList.toggle('hidden'));
+  for (const element of elementsToToggle) {
+    element.classList.toggle('hidden');
+  }
+
   const elementsToDisable = [logInBtn, botCheckBTN];
 
-  elementsToDisable.forEach((element) => {
+  for (const element of elementsToDisable) {
     element.style.opacity = '0.5';
     element.style.pointerEvents = 'none';
-  });
+  }
 });
 
 const newUser = {
