@@ -22,8 +22,8 @@ const requestListener = async (req, res) => {
         const userData = JSON.parse(body);
 
         const handlersByUrl = {
-          '/login': handleSignIn,
-          '/signin': handleLogin,
+          '/login': handleLogin,
+          '/signin': handleSignIn,
         };
 
         const handler = handlersByUrl[req.url];
@@ -45,7 +45,7 @@ const handleNotFoundResource = (res) => {
   res.end(JSON.stringify({ error: 'Not Found' }));
 };
 
-const handleSignIn = (data, res) => {
+const handleLogin = (data, res) => {
   fs.readFile(pathToBase, 'utf8', (error, fileContent) => {
     if (error) {
       res.statusCode = 500;
@@ -77,7 +77,7 @@ const handleSignIn = (data, res) => {
   });
 };
 
-const handleLogin = (data, res) => {
+const handleSignIn = (data, res) => {
   fs.readFile(pathToBase, 'utf8', (error, fileContent) => {
     if (error) {
       res.statusCode = 500;
@@ -90,11 +90,12 @@ const handleLogin = (data, res) => {
       const passwordInBase = allUsers.users.some(
         (person) => person.password === data.password,
       );
+
       if (nameInBase && passwordInBase) {
         res.statusCode = 200;
         res.end();
       } else {
-        res.statusCode = 404;
+        res.statusCode = 409;
         res.end();
       }
     }
