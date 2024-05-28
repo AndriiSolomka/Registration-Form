@@ -43,71 +43,61 @@ const newUser = {
   age: '',
 };
 
-const setupNameInput = () => {
-  getUserName.addEventListener('input', (event) => {
-    const inputName = event.target.value.trim();
-    const correctName = checkName(inputName);
-    const resetName = '';
+const setupNameInput = (event) => {
+  const inputName = event.target.value.trim();
+  const correctName = checkName(inputName);
+  const resetName = '';
 
-    newUser['username'] = correctName ? inputName : resetName;
+  newUser['username'] = correctName ? inputName : resetName;
 
-    validateForm();
-  });
+  validateForm();
 };
-setupNameInput();
+getUserName.addEventListener('input', (event) => setupNameInput(event));
 
-const setupPasswordInput = () => {
-  getUserPassword.addEventListener('input', (event) => {
-    const inputPassword = event.target.value.trim();
-    const correctPassword = checkPassword(inputPassword);
-    const resetPassword = '';
+const setupPasswordInput = (event) => {
+  const inputPassword = event.target.value.trim();
+  const correctPassword = checkPassword(inputPassword);
+  const resetPassword = '';
 
-    newUser['password'] = correctPassword ? inputPassword : resetPassword;
+  newUser['password'] = correctPassword ? inputPassword : resetPassword;
 
-    validateForm();
-  });
+  validateForm();
 };
-setupPasswordInput();
+getUserPassword.addEventListener('input', (event) => setupPasswordInput(event));
 
 const doGenerate = () => {
   const passwordField = document.getElementById('password');
 
-  passwordBtn.addEventListener('click', () => {
-    const generatedPassword = generatePassword(passwordLength);
-    newUser.password = generatedPassword;
-    passwordField.type = 'text';
-    passwordField.value = generatedPassword;
-  });
+  const generatedPassword = generatePassword(passwordLength);
+  newUser.password = generatedPassword;
+  passwordField.type = 'text';
+  passwordField.value = generatedPassword;
 };
-doGenerate();
+passwordBtn.addEventListener('click', () => doGenerate());
 
-const setupEmailInput = () => {
-  getUserEmail.addEventListener('input', (event) => {
-    const inputEmail = event.target.value.trim();
-    const correctEmail = checkEmail(inputEmail);
-    const resetEmail = '';
+const setupEmailInput = (event) => {
+  const inputEmail = event.target.value.trim();
+  const correctEmail = checkEmail(inputEmail);
+  const resetEmail = '';
 
-    newUser['email'] = correctEmail ? inputEmail : resetEmail;
+  newUser['email'] = correctEmail ? inputEmail : resetEmail;
 
-    validateForm();
-  });
+  validateForm();
 };
-setupEmailInput();
+getUserEmail.addEventListener('input', (event) => setupEmailInput(event));
 
-const setupAgeInput = () => {
-  getUserAge.addEventListener('input', (event) => {
-    const inputAge = Number(event.target.value.trim());
-    const minAge = 5;
-    const maxAge = 100;
-    const isAgeValid = inputAge <= maxAge && inputAge >= minAge;
-    const resetAge = '';
+const setupAgeInput = (event) => {
+  const inputAge = Number(event.target.value.trim());
+  const minAge = 5;
+  const maxAge = 100;
+  const isAgeValid = inputAge <= maxAge && inputAge >= minAge;
+  const resetAge = '';
 
-    newUser.age = isAgeValid ? inputAge : resetAge;
+  newUser.age = isAgeValid ? inputAge : resetAge;
 
-    validateForm();
-  });
+  validateForm();
 };
-setupAgeInput();
+getUserAge.addEventListener('input', (event) => setupAgeInput(event));
 
 const validateForm = (human) => {
   const { username, email, password, age } = newUser;

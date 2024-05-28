@@ -31,7 +31,7 @@ container.appendChild(img);
 
 const checkValue = document.querySelector('#animalTable');
 
-checkValue.addEventListener('click', (event) => {
+const checkHuman = (event) => {
   if (event.target.tagName === 'TD') {
     const animalTableName = event.target.innerText.toLowerCase();
     const animalPictureName = randomAnimal.split('.')[0].toLowerCase();
@@ -47,4 +47,6 @@ checkValue.addEventListener('click', (event) => {
       alert('Ти бот!');
     }
   }
-});
+};
+
+checkValue.addEventListener('click', (event) => checkHuman(event));
