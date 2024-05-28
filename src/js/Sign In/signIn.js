@@ -32,9 +32,9 @@ const checkUserData = async (currentUser) => {
     body: JSON.stringify(currentUser),
   });
 
-  const nextPage = (window.location.href = './src/js/Next Page/test.html');
+  const nextPage = './src/js/Next Page/test.html';
 
-  response.ok ? nextPage : signUp();
+  response.ok ? (window.location.href = nextPage) : signUp();
 };
 
 const signUp = () => {
