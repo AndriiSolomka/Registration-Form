@@ -13,7 +13,7 @@ import {
   passwordLength,
   botCheckBTN,
 } from '../const/const.js';
-import { checkEmail, checkName, checkPassword } from './check.js';
+import { checkEmail, checkName, checkPassword, checkAge } from './check.js';
 import { generatePassword } from './randomPassword.js';
 
 signUpBtn.addEventListener('click', (event) => {
@@ -91,12 +91,10 @@ getUserEmail.addEventListener('input', (event) => setupEmailInput(event));
 
 const setupAgeInput = (event) => {
   const inputAge = Number(event.target.value.trim());
-  const minAge = 5;
-  const maxAge = 100;
-  const isAgeValid = inputAge <= maxAge && inputAge >= minAge;
+  const correctAge = checkAge(inputAge);
   const resetAge = '';
 
-  newUser.age = isAgeValid ? inputAge : resetAge;
+  newUser['age'] = correctAge ? inputAge : resetAge;
 
   validateForm();
 };
