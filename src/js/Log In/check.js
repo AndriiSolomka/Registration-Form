@@ -49,4 +49,10 @@ const checkEmail = (email) => {
   return checks.every(Boolean);
 };
 
-export { checkName, checkEmail, checkPassword };
+const checkAge = (age) => {
+  const minAge = 5;
+  const maxAge = 100;
+  const isAgeValid = age <= maxAge && age >= minAge;
+  return isAgeValid;
+};
+export { checkName, checkEmail, checkPassword, checkAge };
