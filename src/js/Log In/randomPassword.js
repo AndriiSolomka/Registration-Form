@@ -10,21 +10,25 @@ const generatePassword = (passwordLength) => {
 
   const allChars = Object.values(options).join('');
   const allCharsLength = allChars.length;
+  const reservedChars = Object.keys(options).length;
+  let randomString = '';
 
   const getRandomChar = (characters) => {
     const randomIndex = Math.floor(Math.random() * characters.length);
     return characters.charAt(randomIndex);
   };
 
-  let randomString = '';
-  const reservedChars = Object.keys(options).length; 
+  const getRandomIndex = (length) => {
+    return Math.floor(Math.random() * length);
+  };
 
   for (const chars of Object.values(options)) {
-    randomString += getRandomChar(chars);
+    randomString = randomString.concat(getRandomChar(chars));
   }
 
   for (let i = reservedChars; i < passwordLength; i++) {
-    randomString += allChars.charAt(Math.floor(Math.random() * allCharsLength));
+    const randomChar = allChars.charAt(getRandomIndex(allCharsLength));
+    randomString = randomString.concat(randomChar);
   }
 
   randomString = shuffleString(randomString);
