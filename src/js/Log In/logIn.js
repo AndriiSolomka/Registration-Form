@@ -72,7 +72,7 @@ const doGenerate = () => {
   const passwordField = document.getElementById('password');
 
   const generatedPassword = generatePassword(passwordLength);
-  newUser.password = generatedPassword;
+  newUser['password'] = generatedPassword;
   passwordField.type = 'text';
   passwordField.value = generatedPassword;
 };
