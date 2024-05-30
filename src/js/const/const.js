@@ -2,6 +2,7 @@
 
 const SIGN_URL = 'http://localhost:9000/signin';
 const LOGIN_URL = 'http://localhost:9000/login';
+const nextPage = './src/js/Next Page/test.html';
 const getUserName = document.querySelector('#username');
 const getUserPassword = document.querySelector('#password');
 const signInBtn = document.querySelector('#signinStatus');
@@ -36,4 +37,5 @@ export {
   animalCheck,
   img,
   regForm,
+  nextPage,
 };
