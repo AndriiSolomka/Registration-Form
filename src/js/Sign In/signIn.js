@@ -6,6 +6,7 @@ import {
   getUserPassword,
   signInBtn,
   signUpBtn,
+  nextPage,
 } from '../const/const.js';
 
 const currentUser = {
@@ -31,8 +32,6 @@ const checkUserData = async (currentUser) => {
     method: 'POST',
     body: JSON.stringify(currentUser),
   });
-
-  const nextPage = './src/js/Next Page/test.html';
 
   response.ok ? (window.location.href = nextPage) : signUp();
 };
