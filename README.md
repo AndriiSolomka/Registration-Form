@@ -17,7 +17,7 @@ A simple and effective registration form built using HTML, CSS, and JavaScript.
 
 2. **Start the server:**
 
-    Open terminal from folder `server` and start `serverSignIn.js`:
+    Open terminal from folder `server` and start `server.js`:
 
     ```sh
     node ./server.js
