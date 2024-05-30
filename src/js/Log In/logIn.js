@@ -16,8 +16,7 @@ import {
 import { checkEmail, checkName, checkPassword, checkAge } from './check.js';
 import { generatePassword } from './randomPassword.js';
 
-signUpBtn.addEventListener('click', (event) => {
-  event.preventDefault();
+const makeToggle = () => {
   const elementsToToggle = [
     getUserEmail,
     getUserAge,
@@ -37,6 +36,10 @@ signUpBtn.addEventListener('click', (event) => {
     element.style.opacity = '0.5';
     element.style.pointerEvents = 'none';
   }
+};
+signUpBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  makeToggle();
 });
 
 const newUser = {
