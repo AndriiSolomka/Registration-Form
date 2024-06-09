@@ -60,7 +60,7 @@ const handleLogin = (data, res) => {
       );
       if (nameInBase || emailInBase) {
         res.statusCode = 409;
-        res.end();
+        res.end(JSON.stringify({ message: 'User already exists' }));
       } else {
         allUsers.users.push(data);
         fs.writeFile(pathToBase, JSON.stringify(allUsers, null, 2), (error) => {
@@ -69,7 +69,9 @@ const handleLogin = (data, res) => {
             res.end(JSON.stringify({ error: 'Error writing file' }));
           } else {
             res.statusCode = 200;
-            res.end();
+            res.end(
+              JSON.stringify({ message: 'User registered successfully' }),
+            );
           }
         });
       }
@@ -93,10 +95,10 @@ const handleSignIn = (data, res) => {
 
       if (nameInBase && passwordInBase) {
         res.statusCode = 200;
-        res.end();
+        res.end(JSON.stringify({ message: 'Login successful' }));
       } else {
         res.statusCode = 409;
-        res.end();
+        res.end(JSON.stringify({ message: 'Invalid username or password' }));
       }
     }
   });

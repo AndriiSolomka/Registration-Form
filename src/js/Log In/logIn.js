@@ -134,12 +134,23 @@ logInBtn.addEventListener('click', async () => {
 });
 
 const checkUserData = async (newUser) => {
-  const response = await fetch(LOGIN_URL, {
-    method: 'POST',
-    body: JSON.stringify(newUser),
-  });
+  try {
+    const response = await fetch(LOGIN_URL, {
+      method: 'POST',
+      body: JSON.stringify(newUser),
+    });
 
-  response.ok ? location.reload() : alert('Такий юзер вже є');
+    const responseData = await response.json();
+
+    if (response.ok) {
+      location.reload();
+    } else {
+      console.error('Error:', responseData);
+      alert('Такий юзер вже є');
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export { validateForm };

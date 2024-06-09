@@ -28,12 +28,24 @@ signInBtn.addEventListener('click', async (event) => {
 });
 
 const checkUserData = async (currentUser) => {
-  const response = await fetch(SIGN_URL, {
-    method: 'POST',
-    body: JSON.stringify(currentUser),
-  });
+  try {
+    const response = await fetch(SIGN_URL, {
+      method: 'POST',
+      body: JSON.stringify(currentUser),
+    });
 
-  response.ok ? (window.location.href = nextPage) : signUp();
+    const responseData = await response.json();
+
+    if (response.ok) {
+      window.location.href = nextPage;
+    } else {
+      console.error('Error:', responseData);
+      signUp();
+    }
+  } catch (error) {
+    console.error(error);
+    signUp();
+  }
 };
 
 const signUp = () => {
